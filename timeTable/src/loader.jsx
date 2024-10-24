@@ -7,7 +7,7 @@ export default function Loader() {
     <div>
       <Box
         sx={{
-          height: "100vh", // Full viewport height
+          height: "100%", // Full viewport height
           display: "flex",
           flexDirection: "column",
           justifyContent: "center", // Horizontally center
