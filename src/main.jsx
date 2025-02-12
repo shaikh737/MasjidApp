@@ -19,12 +19,12 @@ function Main() {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       {loader ? (
         <Loader /> // Show the loader if loading
       ) : (
         <>
-          <App /> {/* Show the main content after loading */}
+          <App />
           <Footer />
         </>
       )}

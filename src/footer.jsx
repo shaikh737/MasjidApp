@@ -5,7 +5,7 @@ import "./index.css";
 export default function footer() {
   return (
     <div className="footer">
-      <p>
+      <p style={{ color: "black" }}>
         &copy; 2024 Your Company. All rights reserved. Made by :{" "}
         <b>Hamza Shaikh</b>
       </p>
