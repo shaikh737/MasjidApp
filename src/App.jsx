@@ -24,9 +24,9 @@ export default function App() {
           <h1 className="display-4" style={{ color: "gold" }}>
             الآ اِلَهَ اِ لّا اللّهُ مُحَمَّدٌ رَسُوُل اللّهِ
           </h1>
-          <p style={{ color: "white" }}>
+          <span style={{ color: "white" }}>
             <Clock />
-          </p>
+          </span>
         </Col>
       </Row>
 

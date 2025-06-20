@@ -1,13 +1,16 @@
+import { useEffect, useState } from "react";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableContainer,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import React from "react";
+import axios from "axios";
 import "./App.css";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -21,26 +24,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
-function createData(namazName, time) {
-  return { namazName, time };
-}
-
-const rows = [
-  createData("Fajr", "5:45 AM"),
-  createData("Zuhr", "1:03 PM"),
-  createData("Asar", "4:30 PM"),
-  createData("Magrib", "6:03 PM"),
-  createData("Isha", "7:45 PM"),
-  createData("Jummah", "1:03 PM"),
-];
-
 export default function NamazTable() {
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://masjidapi.netlify.app/MasjidApp/data.json")
+
+      .then((res) => setRows(res.data))
+      .catch((err) => console.error("API fetch error:", err));
+  }, []);
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="customized table" className="table">
@@ -74,22 +73,22 @@ export default function NamazTable() {
             <h3>Namaz Name</h3>
           </StyledTableCell>
           <StyledTableCell align="center">
-            <h3>Jammat Time</h3>
+            <h3>Jamaat Time</h3>
           </StyledTableCell>
         </TableRow>
 
-        <TableBody>
+        <tbody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.id}>
               <StyledTableCell align="center">
-                <h3 style={{ borderLeft: "4px solid red" }}>{row.namazName}</h3>
+                <h3 style={{ borderLeft: "4px solid red" }}>{row.name}</h3>
               </StyledTableCell>
               <StyledTableCell align="center">
                 <h3 style={{ borderRight: "4px solid green" }}>{row.time}</h3>
               </StyledTableCell>
             </StyledTableRow>
           ))}
-        </TableBody>
+        </tbody>
       </Table>
     </TableContainer>
   );
