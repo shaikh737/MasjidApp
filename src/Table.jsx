@@ -54,10 +54,10 @@ export default function NamazTable() {
                 whiteSpace: "nowrap",
               }}
             >
-              Masjid <br /> Baitul Mukkaramm
+              Masjid <br /> Madni Islamic Center & Masjid
             </h2>
             <a
-              href="https://maps.app.goo.gl/qDrYP4CNwTBz3Xh56"
+              href="https://maps.app.goo.gl/6nhPDT8MgBmfWHC96"
               target="_blank"
               rel="noopener noreferrer"
               style={{ marginLeft: "10px" }}
